@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+  <section>
+  <link rel="stylesheet" th:href="@{/CSS/login.css}">
+ <div class="LoginPageContainer">
+    <div class="LoginPageInnerContainer">
+        <div class="ImageContianer">
+            <img src="https://i.imgur.com/MYZd7of.png" class="GroupImage">
+        </div>
+        <div class="LoginFormContainer">
+            <div class="LoginFormInnerContainer">
+               
+                <header class="header">Log in</header>
+                <header class="subHeader">Welcome to <b>Sri Sai Kisan Kendra!</b> Please Enter your Details</header>
+
+               <form novalidate action="" th:action="@{/user/LoginUser}" method="post" th:object="${user}">
+                    <div class="inputContainer">
+                        <label class="label" for="username"><img src="https://i.imgur.com/Hn13wvm.png" class="labelIcon"><span>UserName
+                                *</span></label>
+                        <input type="text" 
+                        
+                        th:value="${user.username}"
+		 				class="form-control"
+						th:classappend="${#fields.hasErrors('username') ? 'is-invalid':''}"
+                        id="username" name="username"  placeholder="Enter your Username">
+                        <div class="invalid-feedback" th:each="e: ${#fields.errors('username')}" th:text="${e}"></div>
+                    </div>
+                    <div class="inputContainer">
+                        <label class="label" for="password"><img src="https://i.imgur.com/g5SvdfG.png"
+                                class="labelIcon"><span>Password*</span></label>
+                        <input type="password" 
+                        
+                        class="form-control"
+						th:classappend="${#fields.hasErrors('password') ? 'is-invalid':''}" 
+						id="password" name="password" placeholder="Enter your Password">
+						<div class="invalid-feedback" th:each="e: ${#fields.errors('password')}" th:text="${e}"></div>
+                    </div>
+                    <div class="OptionsContainer">
+                        <div class="checkboxContainer">
+                            <input type="checkbox" id="RememberMe" class="checkbox"> <label for="RememberMe">Remember
+                                me</label>
+                        </div>
+                        <a href="#" class="ForgotPasswordLink">Forgot Password?</a>
+                    </div>
+                    <button class="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  </section>
+    
+    
+		
+    
+    
+    
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

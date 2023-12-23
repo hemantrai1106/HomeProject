@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+  <section>
+  
+ 
+  <div class="container">
+<div class="row">
+<div class="col-md-12 " align="center">
+
+
+  
+<form novalidate action=""  th:action="@{/user/productUpdate}" method="post" th:object="${product}"   style="background-color: #2F4F4F;width: 700px;height: 800px;border:solid;">
+
+   
+   <h3 th:if="${page =='addProduct'}" align="center" style="color: #FFFFF0">Add Products</h3>
+    <h3 th:if="${page =='UpdateProduct'}" align="center" style="color: #FFFFF0">Update Product Details</h3>
+    
+ <div th:if="${session.message}" th:classAppend="${session.message.type}" class="alert " role="alert">
+  		<p th:text="${session.message.content}"/p>
+  		<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+</div>
+<div class="form-group">
+
+
+<label for="productType" style="margin-left: 10px; color: #FFFFF0" >Product Type: <span style="color: #FF6347">*</span></label>
+	<select name="productType" id="productType">
+	<option value="">Select Product Type</option>
+  	<option  value="Agriculture">Agriculture</option>
+  <option   value="Animal">Animal</option>
+  <option  value="General">General</option>
+  
+</select>
+</br>
+</br>
+</br>
+</div>
+
+<input type="hidden" th:value="${product.id}" name="id"/>
+<!-- NAME INFO -->
+		<label for="Name" style="margin-left: 10px; color: #FFFFF0" >Product Name: <span style="color: #FF6347">*</span></label>
+		<input id="Name" 
+		type="text" 
+		name="Name"
+		placeholder="Product Name"
+		th:value="${product.Name}"
+		class="form-control"
+		th:classappend="${#fields.hasErrors('Name') ? 'is-invalid':''}"
+		required style="border: solid 1px;margin-left:10px;width: 400px">
+		<div class="invalid-feedback" th:each="e: ${#fields.errors('Name')}" th:text="${e}"></div>
+		<br>
+		</br>
+
+
+
+<!-- Quantity INFO -->
+		<label for="Quantity" style="margin-left: 10px; color: #FFFFF0" >Quantity: <span style="color: #FF6347">*</span></label><br>
+		<input id="Quantity" 
+		type="Number" 
+		name="Quantity"
+		th:value="${product.Quantity}"
+		class="form-control"
+		th:classappend="${#fields.hasErrors('Quantity') ? 'is-invalid':''}"
+		placeholder="Product Quantity"
+		required style="border: solid 1px;margin-left:10px;width: 400px">
+		
+		<br>
+</br>
+
+
+<!-- Quantity INFO -->
+		<label for="price" style="margin-left: 10px; color: #FFFFF0" >Price: <span style="color: #FF6347">*</span></label><br>
+		<input id="price" 
+		type="Number" 
+		name="price"
+		placeholder="Product price"
+		th:value="${product.price}"
+		class="form-control"
+		th:classappend="${#fields.hasErrors('price') ? 'is-invalid':''}"
+		required style="border: solid 1px;margin-left:10px;width: 400px">
+		
+		<br>
+</br>
+
+
+<!-- availabilityStatus INFO -->
+<label for="available" style="margin-left: 10px; color: #FFFFF0" >Availability Status:<span style="color: #FF6347">*</span></label>
+		<label for="available" style="margin-left: 10px;color: #FFFFF0">Available</label>
+		<input id="available" th:value="${product.availabilityStatus}" type="radio" name="availabilityStatus" value="true">
+		<label for="false" style="margin-left: 10px;color: #FFFFF0">Not Available</label>
+		<input id="Not Available" th:value="${product.availabilityStatus}" type="radio" name="availabilityStatus" value="false">
+		<br>
+		<br>
+<button th:if="${page =='addProduct'}" type="submit" class="btn btn-primary">Submit</button>
+<button th:if="${page =='UpdateProduct'}" type="submit" class="btn btn-primary">Update</button>
+
+
+
+
+  
+  
+  
+</form>
+  
+ </div>
+  </div> 
+</div>
+
+  
+  
+  
+  
+  
+  </section>
+    
+    
+		
+    
+    
+    
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
